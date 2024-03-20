@@ -1,16 +1,17 @@
 function solution(numbers, target) {
+    let depth = 0;
     let answer = 0;
-    const length = numbers.length;
-    const calc = (depth, ac) => {
-        if(depth < length) {
-            calc(depth + 1, ac + numbers[depth]);
-            calc(depth + 1, ac - numbers[depth]);   
-        } else {
-            if(ac === target) {
+    const sum = (dep,acc) =>{
+        if(dep<numbers.length){
+            sum(dep+1,acc+numbers[dep]);
+            sum(dep+1,acc-numbers[dep]);
+        }
+        else{
+            if(acc==target){
                 answer++;
             }
         }
     }
-    calc(0, 0);
+    sum(0,0);
     return answer;
 }
