@@ -1,5 +1,5 @@
 function solution(n, m) {
-    let min,max=1;
+    let min=1;
     for(let i =1;i<=n;i++){
         if(n%i===0&&m%i===0){
             min = i;
