@@ -1,13 +1,13 @@
-function solution(s) {
-    const stack = [];
-    
-    for (let i = 0; i < s.length; i++) { 
-        if(stack[stack.length - 1] === s[i]) {
-            stack.pop();
-        } else {
-            stack.push(s[i]);
+function solution(s)
+{
+    let str = [];
+    str.push(s[0]);
+    for(let i =1;i<s.length;i++){
+        if(str[str.length-1]===s[i]){
+            str.pop();
+        }else{
+            str.push(s[i]);
         }
     }
-    
-    return stack.length ? 0 : 1;
+    return str.length===0? 1:0;
 }
