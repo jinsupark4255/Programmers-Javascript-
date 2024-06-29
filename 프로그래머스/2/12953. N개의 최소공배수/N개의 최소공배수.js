@@ -1,25 +1,19 @@
-function solution(arr) {
-    if(arr.length===1){
-        return arr[0];
-    }
-    let answer = arr[0]*arr[1]/gcd(arr[0],arr[1]);
-    console.log(answer);
-    for(let i =2;i<arr.length;i++){
-        let tmp = (answer*arr[i])/gcd(answer,arr[i]);
-        answer = tmp;
-        console.log(answer);
-    }
-    return answer;
-}
-
-function gcd(a,b){
-    let answer = 1;
-    let min = Math.min(a,b);
-    for(let i =2;i<=min;i++){
+const LCD = (a,b)=>{
+    let tmp = 1;
+    for(let i = 1;i<=a;i++){
         if(a%i===0&&b%i===0){
-            answer = i;
+            tmp = i;
         }
     }
-    console.log('gcd:',answer);
-    return answer;
+    return a*b/tmp;
 }
+
+function solution(arr) {
+    let tmp = LCD(arr[0],arr[1]);
+    for(let i =2;i<arr.length;i++){
+        tmp = LCD(tmp,arr[i]);
+        console.log(tmp);
+    }
+    return tmp;
+}
+
