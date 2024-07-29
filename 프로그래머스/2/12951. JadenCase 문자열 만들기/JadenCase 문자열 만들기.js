@@ -1,18 +1,19 @@
 function solution(s) {
-    let arr = s.toLowerCase().split(' ');
+    let arr = s.split(' ');
     let answer = [];
     for(let i =0;i<arr.length;i++){
-        let tmp = ''
-        for(let j =0;j<arr[i].length;j++){
+        let tmp = '';
+        for(let j=0;j<arr[i].length;j++){
+            
             if(j===0){
-                tmp+=arr[i][0].toUpperCase();
+                tmp+=arr[i][j].toUpperCase();
             }
             else{
-                tmp+=arr[i][j]
+                tmp+=arr[i][j].toLowerCase();
             }
         }
         answer.push(tmp);
+        
     }
-    answer = answer.join(' ');
-    return(answer)
+    return answer.join(' ')
 }
