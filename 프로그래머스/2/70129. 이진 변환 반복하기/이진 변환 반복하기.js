@@ -1,26 +1,25 @@
 function solution(s) {
-    let arr = s.split('');
-    let count = 0;
     let sum = 0;
-    let answer=0;
-    while(true){
-        let arr2 = [];
-        if(arr.length==1&&arr[0]==1){
-            return [answer,sum];
-        }
-        for(let i =0;i<arr.length;i++){
-            if(arr[i]==0){
-                count++;
+    let zeroSum = 0;
+    while(s.length!==1){
+        let arr = [];
+        for(let i =0;i<s.length;i++){
+            if(s[i]==1){
+                arr.push(s[i]);
             }
             else{
-                arr2.push(arr[i]);
+                zeroSum++;
             }
         }
-        sum+=count;
-        count = 0;
-        arr.splice(0,arr.length);
-        let len = arr2.length
-        arr=len.toString(2).split('');
-        answer++;
+        let len = arr.length;
+        let arr2 = [];
+        while(len!==0){
+            arr2.push(len%2);
+            len = parseInt(len/2);
+        }
+        s = arr2.reverse().join('');
+        console.log(s)
+        sum++;
     }
+    return [sum,zeroSum];
 }
