@@ -1,20 +1,27 @@
 function solution(n, words) {
-    const seen = new Set(); // 이미 사용된 단어를 저장할 집합
-    let prevWord = words[0];
-    seen.add(prevWord);
-
-    for (let i = 1; i < words.length; i++) {
-        const currentWord = words[i];
-
-        // 이미 사용된 단어이거나 끝말잇기 규칙 위반
-        if (seen.has(currentWord) || prevWord[prevWord.length - 1] !== currentWord[0]) {
-            return [(i % n) + 1, Math.floor(i / n) + 1];
+    let map = new Map();
+    for(let i =0;i<words.length;i++){
+        if(map.has(words[i])){
+            if((i+1)%n===0){
+                return [n,Math.ceil((i+1)/n)];
+            }
+            else{
+                return [(i+1)%n,Math.ceil((i+1)/n)];
+            }
         }
-
-        seen.add(currentWord);
-        prevWord = currentWord;
+        if(!map.has(words[i])){
+            map.set(words[i],1)
+        }
+        if(i<words.length-1){
+            if(words[i][words[i].length-1]!==words[i+1][0]){
+                if((i+2)%n===0){
+                    return [n,Math.ceil((i+2)/n)];
+                }
+                else{
+                    return [(i+2)%n,Math.ceil((i+2)/n)];
+                }
+            }
+        }
     }
-
-    // 모든 단어가 규칙에 맞게 사용된 경우
-    return [0, 0];
+    return [0,0]
 }
