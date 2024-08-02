@@ -19,7 +19,7 @@ function solution(k, tangerine) {
             sum+=arr[i];
             answer++;
         }
-        else if(sum===k){
+        else {
             break;
         }
     }
